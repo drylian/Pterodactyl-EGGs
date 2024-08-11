@@ -23,6 +23,7 @@ export class Readmaker {
         const line = (v: string) => Readmaker.md[i18n.lg] += `${v}\n`;
         i18n.use("All");
         line(i18n.t("ReadmeEggs"));
+        line("|--|--|--|--|--|--|")
         line("").repeat(2);
         line(i18n.t("Table"));
         Readmaker.all[i18n.lg].forEach((table) => {
@@ -40,8 +41,8 @@ export class Readmaker {
         return Readmaker.md[i18n.lg];
     }
     public static main_readme(i18n: I18alt) {
-        let md = `<div align="center">
-# Drylian Eggs
+        let md = `# Drylian Eggs
+<div align="center">
 
 ![license-info](https://img.shields.io/github/license/drylian/Pterodactyl-EGGs?logo=gnu&style=for-the-badge&colorA=302D41&colorB=f9e2af&logoColor=f9e2af)
 ![stars-info](https://img.shields.io/github/stars/drylian/Pterodactyl-EGGs?colorA=302D41&colorB=f9e2af&style=for-the-badge)
@@ -66,7 +67,8 @@ export class Readmaker {
 
 ## Menu
 
-| ✨ Language | Readme | 
+| ✨ Language | Readme |
+|--|--|
 `;
         i18n.use("All");
         const line = (v: string) => md += `${v}\n`;

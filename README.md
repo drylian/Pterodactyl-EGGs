@@ -1,5 +1,5 @@
-<div align="center">
 # Drylian Eggs
+<div align="center">
 
 ![license-info](https://img.shields.io/github/license/drylian/Pterodactyl-EGGs?logo=gnu&style=for-the-badge&colorA=302D41&colorB=f9e2af&logoColor=f9e2af)
 ![stars-info](https://img.shields.io/github/stars/drylian/Pterodactyl-EGGs?colorA=302D41&colorB=f9e2af&style=for-the-badge)
@@ -24,5 +24,6 @@
 
 ## Menu
 
-| ✨ Language | Readme | 
+| ✨ Language | Readme |
+|--|--|
 | Português Brasileiro |[Ver eggs](./docs/pt-BR,[object Object]/Readme.md)|
