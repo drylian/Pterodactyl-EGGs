@@ -26,4 +26,4 @@
 
 | ✨ Language | Readme |
 |--|--|
-| Português Brasileiro |[Ver eggs](./docs/pt-BR/Readme.md)|
+| Português Brasileiro |[Ver eggs](./docs/pt-BR/readme.md)|
