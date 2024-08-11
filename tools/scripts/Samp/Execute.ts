@@ -18,7 +18,7 @@ new Transcripter({
 
         scripter.echo(i18n.t("ArchChecker", { arch: arch }));
         scripter.echo(i18n.t("LangChecker"));
-
+        scripter.echo(i18n.t("Initializ"));
         scripter.use(IfScripter, (ins) => {
             ins.if(
                 new Condition(IsEqual(arch, "amd64")),

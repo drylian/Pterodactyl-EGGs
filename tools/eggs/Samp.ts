@@ -51,7 +51,6 @@ new EggTranslator({
         scripts.done = i18n.t("done");
         egg.config.stop = i18n.t("stop");
         egg.docker_images = newDockers as typeof egg.docker_images;
-        i18n.use("");
         new Readmaker({
             ...Object(i18n.t("table")),
             eggpath:_.path

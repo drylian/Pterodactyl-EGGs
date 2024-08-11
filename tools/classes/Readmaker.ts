@@ -23,14 +23,15 @@ export class Readmaker {
         const line = (v: string) => Readmaker.md[i18n.lg] += `${v}\n`;
         i18n.use("All");
         line(i18n.t("ReadmeEggs"));
-        line("|--|--|--|--|--|--|")
+        
         line("").repeat(2);
         line(i18n.t("Table"));
+        line("|--|--|--|--|--|--|")
         Readmaker.all[i18n.lg].forEach((table) => {
             line(
                 `|${table.title} | [${i18n.t("SeeEgg")}](${
                     gitRootRawURL +
-                    (table.eggpath.replaceAll("{langs}", i18n.lg))
+                    (table.eggpath.replaceAll("{lang}", i18n.lg))
                 }) | ${table.amd ? "✅" : "❌"} | ${
                     table.arm ? "✅" : "❌"
                 } | ${table.arm_oracle ? "✅" : "❌"} | ${table.description} |`,
