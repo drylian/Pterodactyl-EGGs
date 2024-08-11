@@ -19,8 +19,8 @@ export class While {
         condition: string,
         callback: (transcripter: InstanceType<typeof Transcripter>, whileDo: this) => void,
     ) {
-        this.transcripter.raw += `while ${condition}; do\n`;
+        this.transcripter.line(`while ${condition}; do`);
         callback(this.transcripter, this);
-        this.transcripter.raw += `done\n`;
+        this.transcripter.line(`done`);
     }
 }

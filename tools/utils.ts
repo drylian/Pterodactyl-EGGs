@@ -8,10 +8,19 @@ import {
   toFileUrl,
 } from "https://deno.land/std@0.178.0/path/mod.ts";
 import * as lodash41715Npm from "https://cdn.skypack.dev/lodash-es";
-
+export function directory (path:string = import.meta.url) {
+  const dir = dirname(path.startsWith("file") ? fromFileUrl(path) : path);
+  return dir.replace(Deno.cwd(), "")
+}
+export function filename (path:string = import.meta.url) {
+  const dir = path.startsWith("file") ? fromFileUrl(path) : path;
+  return dir.replace(Deno.cwd(), "")
+}
 export const lodash = lodash41715Npm;
 export const __dirname = dirname(fromFileUrl(import.meta.url));
 export const rootDir = __dirname;
+export const gitRootURL = "https://github.com/drylian/Pterodactyl-EGGs/";
+export const gitRootRawURL = "https://raw.githubusercontent.com/drylian/Pterodactyl-EGGs/main/"
 export async function Glob(
   patterns: string[],
   options: ExpandGlobOptions = { root: __dirname },

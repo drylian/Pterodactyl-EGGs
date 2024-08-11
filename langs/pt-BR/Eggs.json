@@ -1,0 +1,39 @@
+{
+    "SampConnected": {
+        "table": {
+            "title": "Samp Connected",
+            "description":"Egg samp",
+            "amd": true,
+            "arm": false,   
+            "arm_oracle": false
+        },
+        "name": "SA-MP Connect",
+        "done": "Servidor Samp foi Iniciado com Sucesso",
+        "stop": "Parar Servidor",
+        "description": "SA-MP é um mod de jogo multiplayer online massivamente gratuito para a versão para PC e Mobile da Rockstar Games Grand Theft Auto: San Andreas (tm).\nCriado por Drylian.\nBase de Ashu\nVersão: 2.0\nLingua:Portugues Brasileiro.\nNecessidade: Precisa de internet para funcionar.",
+        "docker_images": ["Arquitetura AMD64"],
+        "variables": [{
+            "name": "Nome Do Servidor",
+            "description": "Define um Nome para o Servidor, o nome que será visto pelos jogadores.",
+            "default_value": "Servidor Samp"
+        }, {
+            "name": "Maximo de Jogadores",
+            "description": "A quantidade máxima de jogadores que seu servidor pode conter. Ao alterar esse número, você pode alterar quantos jogadores podem entrar no servidor."
+        }, {
+            "name": "Maximo de Npcs",
+            "description": "A quantidade máxima de Npcs que seu servidor pode conter. Ao alterar esse número, você altera quantos slots de jogador podem ser usados para gerar Npcs."
+        }, {
+            "name": "Link do Site",
+            "description": "Isto define o Link que irá aparecer nas informações do Servidor, usuários do SA-MP poderão visualizar."
+        }, {
+            "name": "Visão das Informações do Servidor",
+            "description": "Alterna se as informações do servidor devem ser exibidas no navegador do servidor. Os jogadores ainda podem entrar em um servidor que desativou a consulta, mas o navegador do servidor não exibirá nenhuma informação."
+        }, {
+            "name": "Senha do Rcon",
+            "description": "A senha usada para administrar o servidor e usar o console remoto (rcon). Você deve certificar-se de mudar isso para algo difícil de quebrar para que outros não possam assumir o controle de seu servidor. Seu servidor NÃO iniciará se changeme for a senha RCON!"
+        }, {
+            "name": "Porta Voip (Sampvoice v3/v4)",
+            "description": "Porta Voip para o sampvoice v3/v4, é necessaria para fazer o voip funcionar caso não funcione sem porta!"
+        }]
+    }
+}

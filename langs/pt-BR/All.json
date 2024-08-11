@@ -1,0 +1,9 @@
+{
+    "lang":"Português Brasileiro",
+    "language":"Idioma",
+    "description":"O idioma a ser usado pelo game(se tiver), e para os scripts usados",
+    "SeeReadme":"Ver eggs",
+    "SeeEgg":"Ver egg",
+    "ReadmeEggs":"## Eggs em Português Brasileiro",
+    "Table":"|✨ Egg | 🔗 Link | ✅ AMD | ✅ ARM | ✅ ARM Oracle | 🔰 Descrição |" 
+}

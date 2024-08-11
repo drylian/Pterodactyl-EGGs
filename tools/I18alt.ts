@@ -56,6 +56,7 @@ export default class I18alt {
 		}
 		return resources;
 	}
+	public prefix = "";
 
 	public t = (
 		key: string,
@@ -67,13 +68,17 @@ export default class I18alt {
 		params: Record<string, string | number> = {},
 		checker = true,
 	): string {
+		if (this.prefix) key = this.prefix + key;
 		if (!params.lang) params.lang = this.current;
 		const directory = `LangDIR:${key.replaceAll(":", "/").split(".")[0]}/${
 			key.split(".")[1]
 		}.json`;
 		const keys = key.replaceAll(":", ".").split(".");
 		if (I18alt.core[params.lang]) {
-			let translation = lodash.get(I18alt.core[params.lang], keys.join("."));
+			let translation = lodash.get(
+				I18alt.core[params.lang],
+				keys.join("."),
+			);
 			if (translation === keys.join(".")) {
 				/**
 				 * Not found translation in current lang
@@ -97,13 +102,13 @@ export default class I18alt {
 					); // i18next
 				}
 				return translation;
+			} else {
+				return translation;
 			}
 		} else if (!I18alt.core[params.lang]) {
 			if (!checker) return key;
 			core(
-				`LANG: [${params.lang}].red not found , changing of default lang "${
-					DEFAULT_LANG
-				}"].green.`,
+				`LANG: [${params.lang}].red not found , changing of default lang "${DEFAULT_LANG}"].green.`,
 			);
 			this.current = DEFAULT_LANG;
 			return this.t(key, params);
@@ -141,6 +146,9 @@ export default class I18alt {
 		}
 		core(`LANG: ["${lang}"].blue not found, not changed current lang.`);
 		return false;
+	}
+	public use(space: string) {
+		this.prefix = space.endsWith(".") ? space : `${space}.`;
 	}
 
 	public GNR = (namespace: string, lang?: string) =>

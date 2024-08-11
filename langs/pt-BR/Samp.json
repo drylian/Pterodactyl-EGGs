@@ -1,3 +1,5 @@
 {
-    "Starting":"Iniciando verificações"
+    "ArchChecker":"🟣   Arquitetura atual: [{arch}].blue-b",
+    "LangChecker":"🟣   Lingua Selecionada: [{lang}].blue-b",
+    "CheckingGM":"🟣   Verificando Gamemode, aguarde"
 }

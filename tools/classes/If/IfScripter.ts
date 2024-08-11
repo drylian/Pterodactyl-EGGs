@@ -23,8 +23,10 @@ export class IfScripter {
             ifscripter: this,
         ) => void,
     ) {
-        this.transcripter.raw += `if ${condition.toCommand()}; then\n`;
+        this.transcripter.line(`if ${condition.toCommand()}; then`);
+        this.transcripter.spaces++;
         callback(this.transcripter, this);
+        this.transcripter.spaces--;
     }
 
     /**
@@ -39,8 +41,11 @@ export class IfScripter {
             ifscripter: this,
         ) => void,
     ) {
-        this.transcripter.raw += `elif ${condition.toCommand()}; then\n`;
+        this.transcripter.spaces++;
+        this.transcripter.line(`elif ${condition.toCommand()}; then`);
+        this.transcripter.spaces++;
         callback(this.transcripter, this);
+        this.transcripter.spaces--;
     }
 
     /**
@@ -48,8 +53,10 @@ export class IfScripter {
      * @param callback The function to execute if no previous conditions are met.
      */
     public else(callback: (transcripter: InstanceType<typeof Transcripter>, ifscripter: this) => void) {
-        this.transcripter.raw += `else\n`;
+        this.transcripter.line(`else`);
+        this.transcripter.spaces++;
         callback(this.transcripter, this);
+        this.transcripter.spaces--;
     }
 
     /**
@@ -57,6 +64,7 @@ export class IfScripter {
      * @returns The shell script as a string.
      */
     public done() {
-        this.transcripter.raw += `fi\n`;
+        this.transcripter.spaces--;
+        this.transcripter.line(`fi`);
     }
 }
