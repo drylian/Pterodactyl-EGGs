@@ -40,12 +40,12 @@ export class Condition {
      * @returns The shell command string.
      */
     toCommand(): string {
-      const command = this.conditions.reduce((acc, current) => {
+      const command = this.conditions.reduce((acc, current,index) => {
         switch (current.type) {
           case "and":
-            return `${acc} ${this.conditions.length > 0 ? "&&" : ""} [ ${current.condition} ] `;
+            return `${acc} ${index > 0 ? "&&" : ""} [ ${current.condition} ] `;
           case "or":
-            return `${acc} ${this.conditions.length > 0 ? "||" : ""} [ ${current.condition} ] `;
+            return `${acc} ${index > 0 ? "||" : ""} [ ${current.condition} ] `;
         }
       }, "");
   
