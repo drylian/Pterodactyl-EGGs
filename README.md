@@ -10,6 +10,13 @@
 
 </div>
 
+## Menu
+
+| ✨ Language | Readme |
+|--|--|
+| Português Brasileiro |[Ver eggs](./docs/pt-BR/readme.md)|
+
+         
 ## Statistics Converted
 
 - Total Eggs: 1
@@ -21,9 +28,3 @@
 - Eggs: 1
 - Langs: 1
 - Scripts: 2
-
-## Menu
-
-| ✨ Language | Readme |
-|--|--|
-| Português Brasileiro |[Ver eggs](./docs/pt-BR/readme.md)|

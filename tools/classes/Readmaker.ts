@@ -55,18 +55,6 @@ export class Readmaker {
 
 </div>
 
-## Statistics Converted
-
-- Total Eggs: ${EggTranslator.all.length * i18n.lgs.length}
-- Total Langs: ${i18n.lgs.length}
-- Total scripts: ${Transcripter.all.length * i18n.lgs.length}
-
-## Statistics Base
-
-- Eggs: ${EggTranslator.all.length}
-- Langs: ${i18n.lgs.length}
-- Scripts: ${Transcripter.all.length}
-
 ## Menu
 
 | ✨ Language | Readme |
@@ -81,6 +69,20 @@ export class Readmaker {
                 })|`,
             );
         });
+        md += `
+         
+## Statistics Converted
+
+- Total Eggs: ${EggTranslator.all.length * i18n.lgs.length}
+- Total Langs: ${i18n.lgs.length}
+- Total scripts: ${Transcripter.all.length * i18n.lgs.length}
+
+## Statistics Base
+
+- Eggs: ${EggTranslator.all.length}
+- Langs: ${i18n.lgs.length}
+- Scripts: ${Transcripter.all.length}
+`
         return md;
     }
 }
