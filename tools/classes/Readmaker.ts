@@ -75,7 +75,7 @@ export class Readmaker {
         Object.entries(Readmaker.all).forEach((lang) => {
             i18n.sl(lang[0]);
             line(
-                `| ${i18n.t("lang")} |[${i18n.t("SeeReadme")}](${`./docs/${lang}/Readme.md`
+                `| ${i18n.t("lang")} |[${i18n.t("SeeReadme")}](${`./docs/${lang[0]}/Readme.md`
                 })|`,
             );
         });
