@@ -20,6 +20,7 @@ export class Readmaker {
     }
 
     public static lang_readme(i18n: I18alt) {
+        Readmaker.md[i18n.lg] = "";
         const line = (v: string) => Readmaker.md[i18n.lg] += `${v}\n`;
         i18n.use("All");
         line(i18n.t("ReadmeEggs"));
