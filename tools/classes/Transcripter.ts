@@ -22,6 +22,7 @@ interface TranscripterConstructor {
     /**
      * Path where the script will be generated.
      * The path can include language-specific segments for multi-language support.
+     * Args : {lang} | {version}
      */
     path: string;
 
@@ -90,7 +91,7 @@ export class Transcripter {
      * Line maker.
      */
     public line(raw: string) {
-        if(this.spaces < 0) this.spaces = 1; // reset
+        if (this.spaces < 0) this.spaces = 1; // reset
         this.raw += `${"    ".repeat(this.spaces)}${raw}\n`;
     }
 
@@ -146,7 +147,9 @@ export class Transcripter {
      * ARCHS : "amd64" | "arm64"
      */
     public arch(_var: string = "ARCH"): string {
-        this.line(`${_var}=$([ "$(uname -m)" == "x86_64" ] && echo "amd64" || echo "arm64")`);
+        this.line(
+            `${_var}=$([ "$(uname -m)" == "x86_64" ] && echo "amd64" || echo "arm64")`,
+        );
         return `$${_var}`;
     }
 
@@ -180,6 +183,27 @@ export class Transcripter {
             this.line(`touch "${name}"`);
         }
     }
+
+    /**
+     * Gets content of path file and save in _var. 
+     * If the file doesn't exist, save def in _var.
+     */
+    public read(_var: string, path: string, def: string = "") {
+        const __var = _var.startsWith("$") ? _var : `$${_var}`;
+        this.line(`if [ -f "${path}" ]; then ${__var}=$(<"${path}"); else ${__var}="${def}"; fi`);
+        return __var;
+    }
+
+    /**
+     * Gets content of a remote file from a URL and saves it in _var.
+     * If the URL is not accessible, saves a default value in _var.
+     */
+    public getcontent(_var: string, url: string, def: string = "") {
+        const __var = _var.startsWith("$") ? _var : `$${_var}`;
+        this.line(`if curl --silent --fail "${url}" > /dev/null; then ${__var}=$(curl --silent "${url}"); else ${__var}="${def}"; fi`);
+        return __var;
+    }
+
 
     /**
      * Generates a command to remove .
@@ -238,7 +262,7 @@ export class Transcripter {
      * @param url Url of Download
      * @returns Filename
      */
-    public donwload(file: string, url: string) {
+    public download(file: string, url: string) {
         this.line(`curl -L -o "${file}" "${url}"`);
         return file;
     }

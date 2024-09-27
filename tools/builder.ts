@@ -30,7 +30,7 @@ core.log("Executing scripts...");
 for await (const script of Transcripter.all) {
     for await (const lang of I18alt.live.languages) {
         const i18n = new I18alt(lang);
-        core.log(`Executing script [${script.name}].green-b`);
+        core.log(`Executing script [${script.name}].green-b in version [${script.version}].blue-b`);
         const texts: string[] = [];
         texts.push("#");
         texts.push(`# This file is gerated of script "${script.name}"`);
@@ -73,7 +73,7 @@ for await (const script of Transcripter.all) {
         }
         script.raw += texts.join("\n");
         await script.run(script, i18n);
-        const locale = join(Deno.cwd(), script.path.replace("{lang}", i18n.lg));
+        const locale = join(Deno.cwd(), script.path.replace("{lang}", i18n.lg).replace("{version}", script.version));
         await Deno.mkdir(dirname(locale), { recursive: true });
         await Deno.writeFile(locale, new TextEncoder().encode(script.raw));
     }

@@ -8,6 +8,15 @@ export function ExistFile(path: string): string {
 }
 
 /**
+ * Checks if a file dont exists.
+ * @param path The path to the file
+ * @returns A shell command string
+ */
+export function NotExistFile(path: string): string {
+    return `! -e "${path}"`;
+}
+
+/**
  * Generates a shell command string to check if a variable has a value.
  * @param variable The variable name.
  * @returns A shell command string.
@@ -24,6 +33,16 @@ export function variableHasValueCommand(variable: string): string {
 export function ExistDir(path: string): string {
     return `-d "${path}"`;
 }
+
+/**
+ * Checks if a directory exists.
+ * @param path The path to the directory
+ * @returns A shell command string
+ */
+export function NotExistDir(path: string): string {
+    return `! -d "${path}"`;
+}
+
 
 /**
  * Checks if two values are equal.

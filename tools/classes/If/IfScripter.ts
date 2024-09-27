@@ -27,6 +27,7 @@ export class IfScripter {
         this.transcripter.spaces++;
         callback(this.transcripter, this);
         this.transcripter.spaces--;
+        return this;
     }
 
     /**
@@ -41,30 +42,39 @@ export class IfScripter {
             ifscripter: this,
         ) => void,
     ) {
-        this.transcripter.spaces++;
         this.transcripter.line(`elif ${condition.toCommand()}; then`);
         this.transcripter.spaces++;
         callback(this.transcripter, this);
         this.transcripter.spaces--;
+        return this;
     }
 
     /**
      * Adds an 'else' block and executes the callback.
      * @param callback The function to execute if no previous conditions are met.
      */
-    public else(callback: (transcripter: InstanceType<typeof Transcripter>, ifscripter: this) => void) {
+    public else(
+        callback: (
+            transcripter: InstanceType<typeof Transcripter>,
+            ifscripter: this,
+        ) => void,
+    ) {
         this.transcripter.line(`else`);
         this.transcripter.spaces++;
         callback(this.transcripter, this);
         this.transcripter.spaces--;
+        return this;
     }
 
     /**
      * Generates the final shell script as a string.
      * @returns The shell script as a string.
+     * @param force force spaces to 0
      */
-    public done() {
-        this.transcripter.spaces--;
+    public done(force = false) {
+        if(force) this.transcripter.spaces = 0;
+        else this.transcripter.spaces--
         this.transcripter.line(`fi`);
+        return this;
     }
 }
